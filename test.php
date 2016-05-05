@@ -1,13 +1,13 @@
 <?php
 
-//date_default_timezone_set('Etc/UTC');
+date_default_timezone_set('Etc/UTC');
 
 require_once 'vendor/autoload.php';
 
 $mail = new PHPMailer;
 
-date_default_timezone_set('America/Detroit');
-$today = date('m/d/y');
+//date_default_timezone_set('America/Detroit');
+$today = date('y/m/d');
 
 $mail->isSMTP();
 $mail->SMTPSecure = 'tls'; //ssl has been deprecated since '98 ---not listed in mailing_lists to use...
@@ -16,8 +16,8 @@ $mail->Port = 587;//port 465 didn't seem to work.
 $mail->SMTPAuth = true;
 $mailail->SMTPKeepAlive = true; // SMTP connection will not close after each email sent, reduces SMTP overhead
 
-$mail->Username = 'ENTER EMAIL ADDRESS';
-$mail->Password = 'EMAIL PASSWORD';
+$mail->Username = 'ENTER EMAIL';
+$mail->Password = 'ENTER PASSWORD';
 //$mail->SMTPDebug = 2; turn this line and below on for errors
 //$mail->Debugoutput = 'html'; //Ask for HTML-friendly debug output
 
@@ -42,6 +42,7 @@ $mysqli = new mysqli('localhost', 'phpmailer', 'MailMe247', 'mailer');//connects
 
 // Perform an SQL query
 $sql = 'SELECT first_name, email, last_emailed, hours_left FROM clients WHERE hours_left <= .5';
+
 
 if (!$result = $mysqli->query($sql)) {
     echo "Sorry, the website is experiencing problems.";
