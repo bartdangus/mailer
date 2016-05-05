@@ -1,0 +1,19 @@
+Testing plan:
+
+1. Currently my cronjob logs what its doing here: /var/www/html/mailer/cron_status.log
+	-check that to make sure messages are being sent.
+	-check to make sure that the cronjob is executing properly
+	-the cron_status.log is deleted every time its written to.
+
+2. Make sure my email credentials are setup properly on test.php where the variable are set in the top.
+	$mail->SMTPDebug = 2; //turn this line on to debug smtp errrors
+	$mail->Debugoutput = 'html'; //turn this on for HTML-friendly debug output
+
+3. Troubleshoot the mysql connection. 
+	-the program executes using mysqli methods to connect to the db. First make sure the write packages are installed (initially they weren't)
+		var_dump(function_exists('mysqli_query')); --helpful in figuring that out.
+	-Make sure the permissions are set properly for the mysql user to access the db
+
+4. Check the output messages.
+
+5. Check phpmailer docs, its really well documented.
